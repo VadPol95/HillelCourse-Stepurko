@@ -26,8 +26,5 @@ public class Reverse {
         }
 
         System.out.println(Integer.valueOf(rez));
-
-
-
     }
 }
