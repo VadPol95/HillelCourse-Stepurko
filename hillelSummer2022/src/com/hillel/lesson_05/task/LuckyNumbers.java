@@ -1,4 +1,4 @@
-package com.hillel.lesson_04.ex;
+package com.hillel.lesson_05.task;
 
 public class LuckyNumbers {
 
