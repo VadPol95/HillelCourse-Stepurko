@@ -1,4 +1,4 @@
-package main.java.com.hillel;
+package com.hillel;
 
 public class Run {
     public static void main(String[] args) {

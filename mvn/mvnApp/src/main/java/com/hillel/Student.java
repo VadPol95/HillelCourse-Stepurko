@@ -1,4 +1,4 @@
-package main.java.com.hillel;
+package com.hillel;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

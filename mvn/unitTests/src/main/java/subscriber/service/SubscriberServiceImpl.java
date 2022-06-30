@@ -5,17 +5,23 @@ import subscriber.service.SubscriberService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class SubscriberServiceImpl implements SubscriberService {
     @Override
     public List<Subscriber> checkTimeCityConversation(List<Subscriber> subscriber, int timeCity) {
-       List<Subscriber> sbList = new ArrayList<>();
-        for (Subscriber subscribers : subscriber) {
-            if (subscribers.getTimeCityConversation() >= timeCity) {
-                sbList.add(subscribers);
-            }
-        }
-        return sbList;
+//       List<Subscriber> sbList = new ArrayList<>();
+//        for (Subscriber subscribers : subscriber) {
+//            if (subscribers.getTimeCityConversation() >= timeCity) {
+//                sbList.add(subscribers);
+//            }
+//        }
+//        return sbList;
+
+
+        return subscriber.stream()
+                .filter(s -> s.getTimeCityConversation() >= timeCity)
+                .collect(Collectors.toList());
     }
 
     @Override
