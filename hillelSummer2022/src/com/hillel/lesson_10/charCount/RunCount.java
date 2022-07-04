@@ -1,6 +1,7 @@
 package com.hillel.lesson_10.charCount;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -21,6 +22,7 @@ public class RunCount {
                 alph.put(s, alph.get(s) + 1);
             }
         }
+
 
         List<Letter> letters = new ArrayList<>();
         for (String key : alph.keySet()) {
