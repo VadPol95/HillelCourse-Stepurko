@@ -1,4 +1,4 @@
-package main.java.com.hillel.cur;
+package com.hillel.cur;
 
 import java.io.File;
 import java.util.List;
@@ -10,7 +10,7 @@ public class Run {
 
         File file = new File(userDirectory);
 
-        DirectoryService ds = new DirectoryService();
+        main.java.com.hillel.cur.DirectoryService ds = new main.java.com.hillel.cur.DirectoryService();
 
         List<File> files = ds.directoryContent(file.getAbsolutePath());
 
