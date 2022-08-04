@@ -2,7 +2,9 @@ package hello.controller;
 
 import hello.dto.Student;
 import hello.dto.StudentCreate;
+import hello.dto.StudentDto;
 import hello.service.StudentGenerator;
+import hello.service.StudentRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -29,34 +32,28 @@ import java.util.stream.Collectors;
 public class StudentController {
 
     List<Student> students = StudentGenerator.studentList();
+    StudentRepository sr = new StudentRepository();
 
     @GetMapping("students") //GET [/api/v1/students]
-    List<Student> getStudents(){
-        return students;
+    List<StudentDto> getStudents() throws SQLException {
+        return sr.getStudents();
     }
 
-    @GetMapping("students/{uuid}")
-    Student getStudent(@PathVariable UUID uuid){
-        return students.stream().filter(s -> s.getId().equals(uuid)).findFirst().orElse(null);
+    @GetMapping("students/{id}")
+    StudentDto getStudent(@PathVariable int id) throws SQLException {
+        return sr.getStudent(id);
     }
 
     @PostMapping("student")
-    UUID createStudent(@RequestBody StudentCreate student){
-        UUID uuid = UUID.randomUUID();
-        students.add(new Student(uuid, student.getFirstName(), student.getLastName()));
-        return uuid;
+    int createStudent(@RequestBody StudentCreate student) throws SQLException {
+        sr.createUser(student);
+        return 0;
     }
 
     @PutMapping("student")
-    Student updateStudent(@RequestBody Student student){
-        Optional<Student> first = students.stream().filter(s -> s.getId().equals(student.getId())).findFirst();
-        Student st = null;
-        if (first.isPresent()){
-            st = first.get();
-            st.setFirstName(student.getFirstName());
-            st.setLastName(student.getLastName());
-        }
-        return st;
+    Student updateStudent(@RequestBody StudentDto student) throws SQLException {
+        sr.updateStudent(student);
+        return new Student();
     }
 
     @DeleteMapping("student/{uuid}")
