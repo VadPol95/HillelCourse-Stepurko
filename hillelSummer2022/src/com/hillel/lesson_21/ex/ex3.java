@@ -1,4 +1,4 @@
-package com.hillel.lesson_22.ex;
+package com.hillel.lesson_21.ex;
 
 public class ex3 {
     public static void main(String[] args) {
