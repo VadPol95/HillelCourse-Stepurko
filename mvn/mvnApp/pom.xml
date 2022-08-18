@@ -32,7 +32,7 @@
                     <configuration>
                         <archive>
                             <manifest>
-                                <mainClass>Run</mainClass>
+                                <mainClass>com.hillel.Run</mainClass>
                             </manifest>
                         </archive>
                     </configuration>
