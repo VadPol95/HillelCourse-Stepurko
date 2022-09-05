@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog logicalFilePath="db.changelog-1.0.xml" xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="user" author="hillel_user">
+        <createTable tableName="user">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="first_name" type="VARCHAR(255)"/>
+            <column name="last_name" type="VARCHAR(255)"/>
+            <column name="phone_number" type="VARCHAR(15)"/>
+            <column name="email" type="VARCHAR(100)"/>
+        </createTable>
+    </changeSet>
+
+
+    <changeSet id="addColumnIsActive" author="hille_user">
+        <addColumn tableName="user">
+            <column name="active" type="boolean"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="hillel_user" id="createTableWallet">
+        <createTable tableName="wallet">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column  name="currency"  type="varchar(3)"/>
+            <column  name="ammount"  type="DECIMAL"/>
+            <column  name="last_update"  type="TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
