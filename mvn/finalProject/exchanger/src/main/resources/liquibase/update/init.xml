@@ -30,6 +30,7 @@
             <column  name="currency"  type="varchar(3)"/>
             <column  name="ammount"  type="DECIMAL"/>
             <column  name="last_update"  type="TIMESTAMP"/>
+            <column name="user_id" type="INT"/>
         </createTable>
     </changeSet>
 </databaseChangeLog>
