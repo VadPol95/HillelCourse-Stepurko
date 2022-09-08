@@ -1,6 +1,7 @@
 package com.template.service;
 
 import com.template.dto.UserDto;
+import com.template.entity.User;
 
 import java.util.List;
 

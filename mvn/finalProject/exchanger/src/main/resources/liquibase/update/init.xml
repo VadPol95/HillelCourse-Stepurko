@@ -25,12 +25,47 @@
     <changeSet author="hillel_user" id="createTableWallet">
         <createTable tableName="wallet">
             <column name="id" type="INT" autoIncrement="true">
-                <constraints nullable="false" primaryKey="true" />
+                <constraints nullable="false" primaryKey="true"/>
             </column>
-            <column  name="currency"  type="varchar(3)"/>
-            <column  name="ammount"  type="DECIMAL"/>
-            <column  name="last_update"  type="TIMESTAMP"/>
+            <column name="currency" type="varchar(3)"/>
+            <column name="ammount" type="DECIMAL"/>
+            <column name="last_update" type="TIMESTAMP"/>
             <column name="user_id" type="INT"/>
         </createTable>
+    </changeSet>
+
+    <changeSet author="hillel_user" id="createTableNotification">
+        <createTable tableName="notification">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="type" type="varchar(20)"/>
+            <column name="content" type="varchar(2048)"/>
+            <column name="user_id" type="INT"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="hillel_user" id="createTableRate">
+        <createTable tableName="rate">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="currency" type="varchar(3)"/>
+            <column name="buy" type="DECIMAL"/>
+            <column name="sale" type="DECIMAL"/>
+            <column name="receive" type="TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="ubdate_table" author="hille_user">
+        <modifyDataType
+                columnName="buy"
+                newDataType="varchar(15)"
+                tableName="rate"/>
+        <modifyDataType
+                columnName="sale"
+                newDataType="varchar(15)"
+                tableName="rate"/>
+
     </changeSet>
 </databaseChangeLog>
